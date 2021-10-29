@@ -38,5 +38,5 @@ runcmd:
   - pip3 install -U pip
   - pip3 install -U wheel
   - 'pip install "kolla>=11,<12"'
-  - [ bash, /opt/kolla-build/kolla-build.sh ]
+  - [ bash, /opt/kolla-build/kolla_build.sh ]
   - echo 'OCI Ampere Kolla Image Builder.' >> /etc/motd
