@@ -1,6 +1,6 @@
 {
     "insecure-registries": [
-        "${public_ip}:5000"
+        "${public_ip}:4000"
     ],
     "log-opts": {
         "max-file": "5",
