@@ -9,9 +9,15 @@ output "docker_daemon_json" {
   value = data.template_file.docker_daemon_json.rendered
 }
 
+resource "local_file" "docker_daemon_json" {
+  content = data.template_file.docker_daemon_json.rendered
+  filename = "${path.module}/docker_registry-daemon.json"
+}
+
 data "template_file" "kolla_build_sh" {
   template = file("${path.module}/templates/kolla_build.sh.tpl")
   vars = {
+    kolla_base_image = var.openstack_kolla_base_os_image
     public_ip = oci_core_instance.ampere_a1.0.public_ip
   }
 }

@@ -6,6 +6,7 @@ data "template_file" "cloud_config" {
     tf_ssh_privkey = tls_private_key.oci.private_key_pem
     tf_ssh_pubkey = tls_private_key.oci.public_key_openssh
     tf_random_id = random_uuid.random_id.result
+    kolla_version = var.openstack_kolla_version
   }
 }
 

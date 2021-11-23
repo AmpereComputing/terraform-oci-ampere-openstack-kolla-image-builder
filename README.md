@@ -56,18 +56,19 @@ variable "fingerprint" {}
 variable "private_key_path" {}
 
 module "oci-ampere-openstack-kolla-image-builder" {
-  source                   = "github.com/amperecomputing/terraform-oci-ampere-openstack-kolla-image-builder"
-  tenancy_ocid             = var.tenancy_ocid
-  user_ocid                = var.user_ocid
-  fingerprint              = var.fingerprint
-  private_key_path         = var.private_key_path
+  source                        = "github.com/amperecomputing/terraform-oci-ampere-openstack-kolla-image-builder"
+  tenancy_ocid                  = var.tenancy_ocid
+  user_ocid                     = var.user_ocid
+  fingerprint                   = var.fingerprint
+  private_key_path              = var.private_key_path
 # Optional
-# oci_vcn_cidr_block       = "10.2.0.0/16"
-# oci_vcn_cidr_subnet      = "10.2.1.0/24"
-# instance_prefix          = "openstack-kolla-image-builder"
-# oci_vm_count             = "1"
-# ampere_a1_vm_memory      = "24"
-# ampere_a1_cpu_core_count = "4"
+# oci_vcn_cidr_block            = "10.2.0.0/16"
+# oci_vcn_cidr_subnet           = "10.2.1.0/24"
+# instance_prefix               = "openstack-kolla-image-builder"
+# oci_vm_count                  = "1"
+# ampere_a1_vm_memory           = "24"
+# ampere_a1_cpu_core_count      = "4"
+# openstack_kolla_base_os_image = "ubuntu"
 }
 
 output "oci_ampere_a1_private_ips" {

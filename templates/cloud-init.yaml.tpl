@@ -37,6 +37,6 @@ runcmd:
   - docker run -d --name registry --restart=always -p 4000:5000  -v registry:/var/lib/registry registry:2
   - pip3 install -U pip
   - pip3 install -U wheel
-  - 'pip install "kolla>=11,<12"'
+  - 'pip install "kolla${kolla_version}"'
   - [ bash, /opt/kolla-build/kolla_build.sh ]
   - echo 'OCI Ampere Kolla Image Builder.' >> /etc/motd

@@ -55,3 +55,13 @@ variable "ampere_a1_cpu_core_count" {
     description = "Default core count for Ampere A1 instances in OCI Free Tier"
     type    = string
 }
+variable "openstack_kolla_version" {
+    default = ">=11,<12"
+    description = "Version of Kolla to use when installing, formated as if pip install kolla>=,<12"
+    type    = string
+}
+variable "openstack_kolla_base_os_image" {
+    default = "ubuntu"
+    description = "Base Operating system image to use when building container images using openstack kolla"
+    type    = string
+}
