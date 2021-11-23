@@ -56,7 +56,7 @@ variable "ampere_a1_cpu_core_count" {
     type    = string
 }
 variable "openstack_kolla_version" {
-    default = ">=11,<12"
+    default = ">=12,<13"
     description = "Version of Kolla to use when installing, formated as if pip install kolla>=,<12"
     type    = string
 }
