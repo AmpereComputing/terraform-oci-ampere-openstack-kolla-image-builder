@@ -4,6 +4,22 @@ data "template_file" "docker_daemon_json" {
     public_ip = oci_core_instance.ampere_a1.0.public_ip
   }
 }
+data "template_file" "docker_globals_yaml" {
+  template = file("${path.module}/templates/docker-globals.yml.tpl")
+  vars = {
+    public_ip = oci_core_instance.ampere_a1.0.public_ip
+  }
+}
+
+output "docker_globals_yaml" {
+  value = data.template_file.docker_globals_yaml.rendered
+}
+
+resource "local_file" "docker_globals_yaml" {
+  content = data.template_file.docker_globals_yaml.rendered
+  filename = "${path.module}/openstack_kolla-globals.yml"
+}
+
 
 output "docker_daemon_json" {
   value = data.template_file.docker_daemon_json.rendered
