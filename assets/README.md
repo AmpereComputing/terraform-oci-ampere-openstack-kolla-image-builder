@@ -15,12 +15,14 @@
 
 ## Introduction
 
-[OpenStack Kolla](https://opendev.org/openstack/kolla) is a sub project of the larger [OpenStack](https://openstack.org) project.  It provides a way to build all the [OpenStack](https://openstack.org) services as containers.  
+Keeping up with the pace of sofware development can be difficult.  And In the cloud native world, being able to generate artifacts from build resources on the fly can sometimes accelerate your efforts.  In today's cloud-native world free resources exist like an [Oracle Cloud Infrastructure "Always Free" Account](https://www.oracle.com/cloud/free/#always-free), which provides free on demand Ampere computing resources that enable developers to do exactly this type of work.   Today I'm going to show you how to dynamically build [OpenStack](https://openstack.org) from source and make them easily available for installation via remote hosts.
 
+[OpenStack Kolla](https://opendev.org/openstack/kolla) is a sub project of the larger [OpenStack](https://openstack.org) project.  It provides a way to build all the [OpenStack](https://openstack.org) services as containers.  [OpenStack](https://openstack.org) is a framework to allow you to build a private cloud infrastructure.
+Now personally speaking I have work on and with OpenStack throughout my carrer. Deploying OpenStack on Ampere(R) Altra(TM) Arm64 processors is alway fun. I never get tired of seeing all those cores avaiable in a private cloud, virtual machines, and bare-metal instances dancing across the network.  And as always seeing if "it just works" is even more fun.
 
-Now personally speaking I have work on and with OpenStack throughout my carrer. Deploying OpenStack on Ampere(R) Altra(TM) Arm64 processors is alway fun. I never get tired of seeing all those cores avaiable in a private cloud, and of coure seeing if "it just works" is even more fun.
+In a prevous post i've deployed [OpenStack](https://openstack.org) using [kolla](https://opendev.org/openstack/kolla) and [kolla-ansible](https://opendev.org/openstack/kolla-ansible) using on premise technologies.  Today we're going to take part of that idea  and now instead of building our containers locally on an Ampere paltform, we're going to do it on demand in the cloud.
 
-In this post, we will build upon prevous work to quickly build [OpenStack Kolla](https://opendev.org/openstack/kolla) dynamically using Ampere(R) Altra(TM) Arm64 processors within Oracle Cloud Infrastructure and Ampere A1 shapes.
+In this post, we will [build upon prevous work](https://github.com/AmpereComputing/OpenStack-on-ampere/blob/main/All-in-One.md) to quickly build [OpenStack Kolla](https://opendev.org/openstack/kolla) from source dynamically using Ampere(R) Altra(TM) Arm64 processors within Oracle Cloud Infrastructure and Ampere A1 shapes.
 
 
 ## Requirements
