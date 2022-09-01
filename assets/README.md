@@ -1,19 +1,4 @@
-![Ampere Computing](https://avatars2.githubusercontent.com/u/34519842?s=400&u=1d29afaac44f477cbb0226139ec83f73faefe154&v=4)
-
-# On demeand build infrastructure in OCI using Ampere A1 and Terraform
-
-## Table of Contents
-* [Introduction](#introduction)
-* [Requirements](#requirements)
-* [Using the oci-ampere-a1 terraform module](#using-the-oci-ampere-a1-terraform-module)
-  * [Configuration with terraform.tfvars](#configuration-with-terraformtfvars)
-  * [Creating the main.tf](#creating-the-maintf)
-  * [Creating a cloud-init template](#creating-a-cloud-init-template)
-  * [Running Terraform](#running-terraform)
-  * [Logging in](#logging-in)
-  * [Destroying when done](#destroying-done)
-
-## Introduction
+# On demand build infrastructure in OCI using Ampere A1 and Terraform
 
 Keeping up with the pace of sofware development can be difficult.  And In the cloud native world, being able to generate artifacts from build resources on the fly can sometimes accelerate your efforts.  In today's cloud-native world free resources exist like an [Oracle Cloud Infrastructure "Always Free" Account](https://www.oracle.com/cloud/free/#always-free), which provides free on demand Ampere computing resources that enable developers to do exactly this type of work.   Today I'm going to show you how to dynamically build [OpenStack](https://openstack.org) from source and make them easily available for installation via remote hosts.
 
@@ -32,9 +17,9 @@ Obviously to begin you will need a couple things.  Personally I'm a big fan of t
  * [Terraform](https://www.terraform.io/downloads.html) will need be installed on your system. 
  * [Oracle OCI "Always Free" Account](https://www.oracle.com/cloud/free/#always-free) and credentials for API use
 
-## Forking the oci-ampere-a1 terraform module
+## Forking the oci-ampere-a1 terraform module to create something new
 
-The [oci-ampere-a1](https://github.com/amperecomputing/terraform-oci-ampere-a1) terraform module code supplies the minimal ammount of information to quickly have working Ampere A1 instances on OCI ["Always Free"](https://www.oracle.com/cloud/free/#always-free).  It has been forked and functionality added to quickly build [OpenStack Kolla](https://opendev.org/openstack/kolla) with a series a parameters.  To keep things simple from an OCI perspective, the root compartment will be used (compartment id and tenancy id are the same) when launching any instances.  Addtional tasks performed by the [oci-ampere-a1](https://github.com/amperecomputing/terraform-oci-ampere-a1) terraform module.
+The [oci-ampere-a1](https://github.com/amperecomputing/terraform-oci-ampere-a1) terraform module code supplies the minimal ammount of information to quickly have working Ampere A1 instances on OCI ["Always Free"](https://www.oracle.com/cloud/free/#always-free).  It has been forked as [oci-ampree-openstack-kolla-image-builder](https://github.com/amperecomputing/terraform-oci-ampere-openstack-kolla-image-builder) and functionality added to quickly build [OpenStack Kolla](https://opendev.org/openstack/kolla) with a series a parameters.  The built container images are exposted for consumption via a docker registry running on the host and accessable from the external IP address of the virtual machine.  Additionally a docker.json is outputed within the project directory to allow for drop in configuration on the development station to consume the freshly build container images.    To keep things simple from an OCI perspective, the root compartment will be used (compartment id and tenancy id are the same) when launching any instances.  Addtional tasks performed by the [oci-ampree-openstack-kolla-image-builder](https://github.com/amperecomputing/terraform-oci-ampere-openstack-kolla-image-builder) terraform code.
 
 * Operating system image id discovery in the user region.
 * Dynamically creating sshkeys to use when logging into the instance.
